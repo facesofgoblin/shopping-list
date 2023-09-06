@@ -5,7 +5,7 @@ from django.shortcuts import render #berguna untuk mengimpor fungsi render
 def show_main(request): # mengatur permintaan HTTP dan mengembalikan tampilan yang sesuai.
 
     context = { #dictionary yang berisi data yang akan dikirimkan ke tampilan.
-        'nama': 'Rana Koesumastuti',
+        'name': 'Rana Koesumastuti',
         'class': 'PBP A',
     }
     # me-render tampilan main.html dengan menggunakan fungsi render
