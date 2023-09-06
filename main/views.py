@@ -9,6 +9,7 @@ def show_main(request): # mengatur permintaan HTTP dan mengembalikan tampilan ya
         'class': 'PBP A',
     }
     # me-render tampilan main.html dengan menggunakan fungsi render
+    # di dalam render ada sebuah request untuk 
     return render(request, "main.html", context) 
 
 
