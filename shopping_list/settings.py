@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-#Tutorial: Menambahkan Konfigurasi Deployment ke PaaS PBP Fasilkom UI
 import environ # Tambahkan kode berikut
 import os # Tambahkan kode berikut
+
+#Tutorial: Menambahkan Konfigurasi Deployment ke PaaS PBP Fasilkom UI
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +31,7 @@ SECRET_KEY = 'django-insecure-sibaetd%*+l#!pqj0^#r^c!ywpa)vmjh01r5z1g!1v=^zq+uf7
 PRODUCTION = env.bool('PRODUCTION', False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG=True
 
 ALLOWED_HOSTS = ["*"]
 
