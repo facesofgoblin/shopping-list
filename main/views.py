@@ -1,3 +1,6 @@
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
 from django.shortcuts import render #berguna untuk mengimpor fungsi render
 #django.shortcuts Fungsi render digunakan untuk me-render tampilan HTML dengan menggunakan data yang diberikan.
 # Create your views here.
@@ -5,9 +8,7 @@ from django.shortcuts import render #berguna untuk mengimpor fungsi render
 # PERUBAHAN: 13 SEP 2023, TUTORIAL 2
 # Membuat Form Input Data dan Menampilkan Data Produk Pada HTML
 #ditambahkan beberapa import berikut:
-from django.http import HttpResponseRedirect
-from main.forms import ProductForm
-from django.urls import reverse
+
 from main.models import Product
 
 # Tutorial Mengembalikan Data dalam Bentuk XML
