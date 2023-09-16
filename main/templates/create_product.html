@@ -1,0 +1,20 @@
+<!-- PERUBAHAN 13 SEP 2023: TUTORIAL 02-->
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1>Add New Product</h1>
+
+<form method="POST">    <!--<form method="POST"> digunakan untuk menandakan block untuk form dengan metode POST.-->
+    {% csrf_token %}    <!--token yang berfungsi sebagai security. Token ini di-generate secara otomatis oleh Django untuk mencegah serangan berbahaya.-->
+    <table>
+        {{ form.as_table }}     <!--digunakan untuk menampilkan fields form yang sudah dibuat pada forms.py sebagai table.-->
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Add Product"/> <!-- tombol submit untuk mengirimkan request ke view-->
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}

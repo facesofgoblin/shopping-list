@@ -1,6 +1,55 @@
-<h1>Shopping List Page</h1>
+<!-- <h1>Shopping List Page</h1>
 
 <h5>Name: </h5>
-<p>Raana Koesumastuti</p> <!-- Ubahlah sesuai dengan nama kamu -->
+<p>Raana Koesumastuti</p> Ubahlah sesuai dengan nama kamu
 <h5>Class: </h5>
-<p>PBP A</p> <!-- Ubahlah sesuai dengan kelas kamu -->
+<p>PBP A</p> Ubahlah sesuai dengan kelas kamu --> 
+
+<!--PERUBAHAN: 13 SEP 2023, TUTORIAL 2-->
+<!--Menggunakan base.html sebagai template utama-->
+<!-- Implementasi Skeleton sebagai Kerangka Views-->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Shopping List Page</h1> 
+
+    <h5>Name:</h5>
+    <p>{{name}}</p>
+
+    <h5>Class:</h5>
+    <p>{{class}}</p>
+
+    ...
+<!-- Membuat Form Input Data dan Menampilkan Data Produk Pada HTML-->
+<!-- kode di bawah ini ditambahkan -->
+<!--untuk menampilkan data produk dalam bentuk table serta tombol "Add New Product" yang akan redirect ke halaman form.-->
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for product in products %}
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.date_added}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
