@@ -11,6 +11,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Little Goblin's Inventory</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">{{name}}</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'main:logout' %}">
+                <button>
+                    Logout
+                </button>
+            </a>
+          </li>
+      </div>
+    </div>
+  </nav>
+
     <h1>Shopping List Page</h1> 
 
     <h5>Name:</h5>
@@ -40,13 +62,31 @@
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
             <td>{{product.date_added}}</td>
+            <td>
+                <a href="{% url 'main:edit_product' product.pk %}">
+                    <button>
+                        Edit
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'main:delete_product' product.pk %}">
+                      <button>
+                          Delete
+                      </button>
+                  </a>
+            </td>
         </tr>
     {% endfor %}
 </table>
 
 <br />
 
-
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
 <a href="{% url 'main:logout' %}">
     <button>
         Logout
@@ -55,10 +95,6 @@
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
-<a href="{% url 'main:create_product' %}">
-    <button>
-        Add New Product
-    </button>
-</a>
+
 
 {% endblock content %}

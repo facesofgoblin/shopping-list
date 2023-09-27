@@ -22,3 +22,6 @@ class Product(models.Model):
 # nama, tanggal_tambah, harga, dan deskripsi adalah atribut atau field pd model
 # Setiap field memiliki tipe data yang sesuai
 
+#TUTORIAL 4 
+
+
