@@ -3,6 +3,10 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 
+# TUTORIAL 5
+# AJAX
+from django.views.decorators.csrf import csrf_exempt
+
 # IMPOR UNTUK KEPERLUAN FUNGSI LOG IN
 from django.contrib.auth import authenticate, login
 # IMPOR UNTUK KEPERLUAN FUNGSI LOG OUT
@@ -78,6 +82,30 @@ def show_main(request):
         'last_login': request.COOKIES['last_login']   # PENAMBAHAN VARIABEL
     }
     return render(request, "main.html", context)
+
+# TUTORIAL 5
+# MEMBUAT FUNGSI UNTUK MENGEMBALIKAN DATA JSON
+def get_product_json(request):
+    product_item = Product.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+#Membuat Fungsi untuk Menambahkan Produk dengan AJAX
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        #name = request.POST.get("name") berfungsi untuk mengambil value name pada request.
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        user = request.user
+
+    # new_product membuat objek Product baru dengan parameter sesuai values dari request.
+        new_product = Product(name=name, price=price, description=description, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+    return HttpResponseNotFound()
 
 #Membuat fungsi baru dengan nama create_product yg menerima parameter request
 # def create_product(request):
@@ -209,3 +237,4 @@ def delete_product(request, id):
     product.delete()
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
+

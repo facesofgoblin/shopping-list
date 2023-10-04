@@ -4,7 +4,7 @@
 from django.urls import path
 
 #fungsi show_main dr modul main.views sebagai tampilan jika URL di
-from main.views import show_main
+from main.views import add_product_ajax, get_product_json, show_main
 
 #13 September 2023
 # impor fungsi create_product yg tadi dibuat di views.py
@@ -53,4 +53,9 @@ urlpatterns = [
     # TUTORIAL 4
     path('edit-product/<int:id>', edit_product, name='edit_product'),
     path('delete/<int:id>', delete_product, name='delete_product'), # sesuaikan dengan nama fungsi yang dibuat
+
+    # TUTORIAL 5
+    
+    path('get-product/', get_product_json, name='get_product_json'),
+    path('create-product-ajax/', add_product_ajax, name='add_product_ajax'),
 ]
